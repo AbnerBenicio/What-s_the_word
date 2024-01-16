@@ -1,9 +1,13 @@
-import "./Game.css"
+/* eslint-disable react/prop-types */
+import "./Game.css";
 
-const Game = ({setScore}) => {
+const Game = ({ setScore, verifyLetter }) => {
   return (
-    <div>Game</div>
-  )
-}
+    <div>
+      <h1>Game</h1>
+      <button onClick={verifyLetter}>Finalizar game</button>
+    </div>
+  );
+};
 
-export default Game
+export default Game;

@@ -1,6 +1,11 @@
-const Gameover = () => {
+/* eslint-disable react/prop-types */
+const Gameover = ({retry}) => {
   return (
-    <div>Gameover</div>
+    <div>
+      <h1>Gameover</h1>
+      <button onClick={retry}>Recomeçar o jogo</button>
+    </div>
+    
   )
 }
 
