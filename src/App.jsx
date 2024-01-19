@@ -33,6 +33,8 @@ function App() {
     return initialValue || 0;
   });
 
+  const [currentScore, setCurrentScores] = useState(0)
+
   //Setting game stage state
   const [gameStage, setGameStage] = useState(stages[0].name);
 
@@ -45,6 +47,10 @@ function App() {
 
   //Setting letters state of the picked word
   const [letters, setLetters] = useState([])
+
+  const [guessedLetters, setGuessedLetters] = useState([])
+  const [wrongLetters, setWrongLetters] = useState([])
+  const [guesses, setGuesses] = useState(3)
 
   //Picked the word and category
   const pickWordAndCategory = () => {
@@ -99,7 +105,8 @@ function App() {
           startGame={startGame}
         />
       )}
-      {gameStage === "game" && <Game setScore={setScoreMax} verifyLetter={verifyLetter}/>}
+      {gameStage === "game" && <Game verifyLetter={verifyLetter} pickedWord={pickedWord} pickedCategory={pickedCategory} letters={letters} guessedLetters={guessedLetters} wrongLetters={wrongLetters}
+      guesses={guesses} currentScore={currentScore}/>}
       {gameStage === "end" && <Gameover retry={retry}/>}
     </div>
   );
