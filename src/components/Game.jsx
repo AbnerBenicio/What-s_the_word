@@ -1,8 +1,24 @@
 /* eslint-disable react/prop-types */
 import "./Game.css";
+import { useState, useRef } from "react";
 
 const Game = ({ verifyLetter, pickedWord, pickedCategory, letters, guessedLetters, wrongLetters, guesses, currentScore }) => {
+
+  const [letter, setLetter] = useState("")
+  const letterInputRef = useRef(null)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    verifyLetter(letter)
+
+    setLetter("")
+
+    letterInputRef.current.focus()
+  }
+
   return (
+
     <div className="game">
       <p className="points">
         <span>Pontuação: {currentScore}</span>
@@ -20,8 +36,8 @@ const Game = ({ verifyLetter, pickedWord, pickedCategory, letters, guessedLetter
         ))}
       </div>
       <div className="letterContainer">
-        <form >
-          <input type="text" name="letter" maxLength="1" required/>
+        <form onSubmit={handleSubmit}>
+          <input ref={letterInputRef} type="text" name="letter" maxLength="1" required onChange={(e) => setLetter(e.target.value)} value={letter}/>
           <button>Jogar!</button>
         </form>
       </div>
@@ -31,7 +47,7 @@ const Game = ({ verifyLetter, pickedWord, pickedCategory, letters, guessedLetter
           i === wrongLetters.length - 1 ? (
             <span key={i}>{letter}</span>
           ) : (
-            <span key={i}>{letter}</span>
+            <span key={i}>{letter},</span>
           )
         ))}
       </div>
