@@ -27,23 +27,6 @@ const stages = [
 
 function App() {
 
-  useEffect(() => {
-    const handleOrientationChange = () => {
-      // Bloquear a orientação para retrato (vertical)
-      if (window.screen && window.screen.lockOrientation) {
-        window.screen.lockOrientation('portrait');
-      }
-    };
-
-    // Adicionar um ouvinte de evento para a mudança de orientação
-    window.addEventListener('orientationchange', handleOrientationChange);
-
-    // Remover o ouvinte de evento ao desmontar o componente
-    return () => {
-      window.removeEventListener('orientationchange', handleOrientationChange);
-    };
-  }, []);
-
   //Setting max score of the user
   const [scoreMax, setScoreMax] = useState(() => {
     const data = localStorage.getItem("score");
