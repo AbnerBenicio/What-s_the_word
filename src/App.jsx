@@ -27,14 +27,6 @@ const stages = [
 
 function App() {
 
-  useEffect(() => {
-    // Verifica se o navegador suporta a API de bloqueio de orientação
-    if ('orientation' in window.screen) {
-      // Bloqueia a rotação de tela
-      window.screen.orientation.lock('portrait').catch(err => console.error('Erro ao bloquear orientação:', err));
-    }
-  }, []);
-
   //Setting max score of the user
   const [scoreMax, setScoreMax] = useState(() => {
     const data = localStorage.getItem("score");

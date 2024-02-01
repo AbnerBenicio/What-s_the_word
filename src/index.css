@@ -29,3 +29,13 @@ button:hover {
     background-color: #fff;
     color: #4887fc;
 }
+
+@media screen and (orientation: portrait) {
+    /* Estilos que serão aplicados apenas quando a orientação for retrato */
+    body {
+      /* Bloqueia a rotação de tela para o modo retrato */
+      /* Isso fará com que a aplicação permaneça no modo retrato independentemente do dispositivo */
+      transform: rotate(0deg);
+      transform-origin: center;
+    }
+  }
